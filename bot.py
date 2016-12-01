@@ -42,8 +42,8 @@ try:
             # Sleep for a minute so we don't spam Twitter in case of many earthquakes at once
             time.sleep(60)
 
-        # Sleep for a minute so we don't spam Twitter
-        time.sleep(60)
+        # Sleep for an hour so we don't spam Twitter
+        time.sleep(60 * 60)
 
 except Exception as e:
     print("Error ocurred")
