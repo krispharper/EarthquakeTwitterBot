@@ -15,14 +15,15 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 twitter = tweepy.API(auth)
 
-# Default start_time to one hour ago
-start_time = datetime.utcnow() - timedelta(hours=1)
+# Default start_time to one minute ago
+start_time = datetime.utcnow() - timedelta(minutes=1)
 
 try:
     # Loop forever
     while True:
         # Construct the USGS API URL by including start_time as a parameter
         usgs_url = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime={0}".format(start_time.isoformat())
+        print(usgs_url)
         # Get the response and extract the "features" element
         response = requests.get(usgs_url)
         earthquakes = response.json()['features']
